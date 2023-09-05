@@ -1,0 +1,51 @@
+<div class="container-fluid bg-dark">
+  <div class="content heading">
+    <div class="text-center p-3">
+      <h1>Unlock Sustainable Growth</h1>
+      <h2>Minimize Carbon Emissions in Your Investment Portfolio</h2>
+      <h3>Get Your Impcats By creating your own portfolio</h3>
+    </div>
+    <form [formGroup]="companyForm">
+      <div formArrayName="companies">
+        <div *ngFor="let companyControl of companyControls; let i = index" class="border p-3 mx-5">
+          <div [formGroupName]="i">
+            <div class="row ">
+              <div class="col-md-5 no-border">
+                <div class="mb-3 my-2">
+                  <label for="name{{ i }}" class="form-label">Company Name</label>
+                  <input type="text" class="form-control" id="name{{ i }}" formControlName="companyName"
+                    (input)="onCompanyNameInput($event,i)" (focus)="setSelectedCompanyIndex(i)" required />
+                  <ul class="list-group list-group-flush" *ngIf="showDropdown[i]">
+                    <li class="list-group-item" *ngFor="let c of filteredCompanies" appHighlight
+                      (click)="selectCompany(c,i)">
+                      {{ c }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="mb-3 my-2">
+                  <label for="investmentAmout{{ i }}" class="form-label">Investment Amount</label>
+                  <input type="number" class="form-control" id="investmentAmout{{ i }}"
+                    formControlName="investmentAmount" required />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="" style="margin: 2.25rem;;">
+                  <button type="button" class="btn btn-danger" (click)="removeCompany(i)">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary mt-5  portfolio-btn" (click)="addCompany()">Add Company</button>
+      </div>
+    </form>
+    <div class="text-center">
+      <button type="button" class="btn btn-primary mt-5  portfolio-btn " (click)="calculateImpact()">Calculate
+        Impact</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.content {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(8, 8, 8, 0.952);
+  height: auto;
+  min-height: 100%;
+  padding: 2rem;
+}
+
+.heading {
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.portfolio-btn {
+  background-color: #a61e4d;
+  color: #efefef;
+  border: none;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: -10px 5px 5px 0px rgba(213, 203, 203, 0.904);
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
+  font-weight: 500;
+}
+
+.border {
+  border: 0 !important;
+  box-shadow: none;
+}

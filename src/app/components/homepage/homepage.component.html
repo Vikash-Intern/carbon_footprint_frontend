@@ -1,0 +1,50 @@
+<div class="container 100-vh ">
+<div class="background"></div>
+<!-- <video  id="background-video" autoplay muted loop playsinline >
+  <source src="https://ik.imagekit.io/amazonclone01/GIST/world_-_1992%20(540p)_UfifOBFk_.mp4?updatedAt=1692902510495" type="video/mp4">
+</video> -->
+<div class="content">
+ <div class="heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="left-part">
+         <h1> Carbon FootPrint Calculator </h1>
+         <!-- {{request|json}} -->
+         <form #requestForm="ngForm" (ngSubmit)="calculateFootprint()">
+          <div class="form-row">
+            <div class="form-group mt-2 ">
+              <label>Company</label>
+              <input [(ngModel)]="request.companyName" required type="text" class="form-control mt-2" #companyName="ngModel" name="inputCompany" placeholder="Company" autofocus>
+              <span class="error-hint" *ngIf="companyName.invalid && companyName.touched"></span>
+              <ul class="list-group list-group-flush" [hidden]="hideList">
+                <!-- results of ngFor is passed to appFilter with argument searchText -->
+                <li class="list-group-item" *ngFor="let c of characters | filter:request.companyName"
+                appHighlight [searchedWord]="request.companyName" [content]="c"  
+                [classToApply]="'font-weight-bold'" [setTitle]='true' (click)="selectCompany(c)">
+                  {{c}}
+                </li>
+              </ul>
+            </div>
+            
+            <div class="form-group mt-2">
+              <label >Amount in USD</label>
+              <input required [(ngModel)]="request.investmentAmount"  type="text" pattern="[0-9]*" class="form-control mt-2" name="inputInvestment" #investmentAmount="ngModel" placeholder="12,345,566 $" >
+             <span class="error-hint" *ngIf="investmentAmount.invalid && investmentAmount.touched">Please input valid data</span>
+            </div>
+          </div>
+          <button type="submit"  [disabled]="requestForm.invalid" class="btn btn-primary mt-3">Calculate Impact</button>
+        </form>
+        <div class="col-12 text-center">
+          <button type="button" class="create-portfolio-btn mt-5 text-center align-items-center" (click)="navigateToPortfolio()" >Create Portfolio</button>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="right-part">
+        </div>
+      </div>
+    </div>
+ </div>
+</div>
+</div>
