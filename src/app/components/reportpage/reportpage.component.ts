@@ -52,7 +52,8 @@ export class ReportpageComponent implements OnInit{
       {
       xValueType: "dateTime",
       title :"Year",
-      xValueFormatString: "YYYY",
+      valueFormatString: "YYYY",
+      intervalType: "year",
       }],
 		data: [{
       //type: "area",
@@ -60,7 +61,8 @@ export class ReportpageComponent implements OnInit{
       lineThickness: 3,
       lineColor: "#2ae8c6",
 			yValueFormatString: "$#,###.##",
-      xValueType: "dateTime",
+      xValueFormatString: "YYYY",
+      xValueType: "year",
 			dataPoints:this.dataPoints
       }	
 	]

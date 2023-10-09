@@ -10,16 +10,17 @@ export class PorfolioReportComponent implements OnInit{
 	constructor(private dataService:DataStorageService){}
 	benchMarkDataPoints: DataPoints[]=[];
 	impactDataPoints:DataPoints[]=[];
+	tempData:any;
 	ngOnInit() {
-		const tempData:any=this.dataService.portfolioImpact;
-		for(let i=0;i<tempData.length;i++){
+		 this.tempData=this.dataService.portfolioImpact;
+		for(let i=0;i<this.tempData.length;i++){
 		  const newDataPointImpact: DataPoints = {
-			x: new Date(tempData[i].reportingYear,1,1),
-			y: tempData[i].totalCarbonFootprint// You can replace this with your actual data calculation
+			x: new Date(this.tempData[i].reportingYear,1,1),
+			y: this.tempData[i].totalCarbonFootprint// You can replace this with your actual data calculation
 		 };
 		 const newDataPointBenchMark: DataPoints = {
-			x: new Date(tempData[i].reportingYear,1,1),
-			y: tempData[i].benchMarkFootprint// You can replace this with your actual data calculation
+			x: new Date(this.tempData[i].reportingYear,1,1),
+			y: this.tempData[i].benchMarkFootprint// You can replace this with your actual data calculation
 		 };
 		 this.benchMarkDataPoints.push(newDataPointBenchMark);
 		 this.impactDataPoints.push(newDataPointImpact);
